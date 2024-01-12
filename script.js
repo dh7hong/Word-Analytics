@@ -4,7 +4,7 @@ const twitterNumberEl = document.querySelector(".stat__number--twitter");
 const facebookNumberEl = document.querySelector(".stat__number--facebook");
 const wordsNumberEl = document.querySelector(".stat__number--words");
 
-textareaEl.addEventListener("input", function () {
+const inputHandler = () => {
   // determine new numbers
   const numberOfCharacters = textareaEl.value.length;
   const twitterCharactersLeft = 280 - numberOfCharacters;
@@ -33,7 +33,7 @@ textareaEl.addEventListener("input", function () {
   twitterNumberEl.textContent = twitterCharactersLeft;
   facebookNumberEl.textContent = facebookCharactersLeft;
   wordsNumberEl.textContent = numberOfWords;
-});
+};
 
 function countWords(str) {
   // Using \p{L} to match any kind of letter and \d for digits
@@ -41,7 +41,4 @@ function countWords(str) {
   return words ? words.length : 0;
 }
 
-// Example usage
-const myString = "Bonjour le monde! Ceci est un test.";
-const wordCount = countWords(myString);
-console.log(wordCount); // Output will be the number of words in myString
+textareaEl.addEventListener("input", inputHandler)
